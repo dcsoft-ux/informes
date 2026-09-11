@@ -6,7 +6,7 @@
       "Sustentación de refuerzo para AWS IA & ML Services Assessment"
     ],
     "evaluaciones": [
-      "AWS Certified AI Practitioner"
+      "Simulador AWS Certified AI Practitioner"
     ],
     "laboratorios": [
       "S10 · IAM mínimo privilegio para IA, logging de invocación y control de costos"
@@ -21,29 +21,19 @@
     ]
   },
   {
-    "id": 1788822317162,
-    "fecha": "2026-09-07",
+    "id": 1789065745973,
+    "fecha": "2026-09-10",
     "temas": [
-      "AWS IA & ML Services Assessment"
+      "AWS Certified AI Practitioner (16 preguntas resueltas)",
+      "Preparación de sustentación de refuerzo para AWS IA & ML Services Assessment"
     ],
-    "evaluaciones": [],
+    "evaluaciones": [
+      "Simulador AWS IA & ML Services Assessment"
+    ],
     "laboratorios": [],
     "evidencia": [
-      "https://drive.google.com/file/d/17rww8bpRWhwbvJPEk7JvzZk27RpTL8cM/view?usp=sharing"
-    ]
-  },
-  {
-    "id": 1788911442325,
-    "fecha": "2026-09-08",
-    "temas": [
-      "AWS Certified AI Practitioner (23 preguntas resueltas)"
-    ],
-    "evaluaciones": [],
-    "laboratorios": [
-      "S09 Guardrails, Sesgo y Privacidad"
-    ],
-    "evidencia": [
-      "https://drive.google.com/file/d/1T9r-MYi6d4w3pw9xwxgqKwWef8DH_6f_/view?usp=sharing"
+      "https://drive.google.com/file/d/1PlamEEA89fUJv6-jUlPWGmx0m48SfXu6/view?usp=sharing",
+      "https://docs.google.com/document/d/1T5yzQu_ztqC-MNx2Z6gDrNTti3Bo4UaBQ2WXF8PlWy0/edit?usp=sharing"
     ]
   },
   {
@@ -61,19 +51,29 @@
     ]
   },
   {
-    "id": 1789065745973,
-    "fecha": "2026-09-10",
+    "id": 1788911442325,
+    "fecha": "2026-09-08",
     "temas": [
-      "AWS Certified AI Practitioner (16 preguntas resueltas)",
-      "Preparación de sustentación de refuerzo para AWS IA & ML Services Assessment"
+      "AWS Certified AI Practitioner (23 preguntas resueltas)"
     ],
-    "evaluaciones": [
-      "Simulador AWS IA & ML Services Assessment"
+    "evaluaciones": [],
+    "laboratorios": [
+      "S09 Guardrails, Sesgo y Privacidad"
     ],
+    "evidencia": [
+      "https://drive.google.com/file/d/1T9r-MYi6d4w3pw9xwxgqKwWef8DH_6f_/view?usp=sharing"
+    ]
+  },
+  {
+    "id": 1788822317162,
+    "fecha": "2026-09-07",
+    "temas": [
+      "AWS IA & ML Services Assessment"
+    ],
+    "evaluaciones": [],
     "laboratorios": [],
     "evidencia": [
-      "https://drive.google.com/file/d/1PlamEEA89fUJv6-jUlPWGmx0m48SfXu6/view?usp=sharing",
-      "https://docs.google.com/document/d/1T5yzQu_ztqC-MNx2Z6gDrNTti3Bo4UaBQ2WXF8PlWy0/edit?usp=sharing"
+      "https://drive.google.com/file/d/17rww8bpRWhwbvJPEk7JvzZk27RpTL8cM/view?usp=sharing"
     ]
   }
 ]
