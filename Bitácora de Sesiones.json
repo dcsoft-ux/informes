@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1788822317162,
+    "fecha": "2026-09-07",
+    "temas": [
+      "AWS IA & ML Services Assessment"
+    ],
+    "evaluaciones": [],
+    "laboratorios": [],
+    "evidencia": [
+      "https://drive.google.com/file/d/17rww8bpRWhwbvJPEk7JvzZk27RpTL8cM/view?usp=sharing"
+    ]
+  },
+  {
+    "id": 1788911442325,
+    "fecha": "2026-09-08",
+    "temas": [
+      "AWS Certified AI Practitioner (23 preguntas resueltas)"
+    ],
+    "evaluaciones": [],
+    "laboratorios": [
+      "S09 Guardrails, Sesgo y Privacidad"
+    ],
+    "evidencia": [
+      "https://drive.google.com/file/d/1T9r-MYi6d4w3pw9xwxgqKwWef8DH_6f_/view?usp=sharing"
+    ]
+  },
+  {
+    "id": 1788995716305,
+    "fecha": "2026-09-10",
+    "temas": [
+      "AWS Certified AI Practitioner (26 preguntas resueltas)"
+    ],
+    "evaluaciones": [],
+    "laboratorios": [
+      "S09 Guardrails, Sesgo y Privacidad"
+    ],
+    "evidencia": [
+      "https://drive.google.com/file/d/16nd5RARhVtlkj7iep0L5VOgugm1R85Bq/view?usp=sharing"
+    ]
+  },
+  {
+    "id": 1789065745973,
+    "fecha": "2026-09-11",
+    "temas": [
+      "AWS Certified AI Practitioner (16 preguntas resueltas)",
+      "Preparación de sustentación de refuerzo para AWS IA & ML Services Assessment"
+    ],
+    "evaluaciones": [
+      "Simulador AWS IA & ML Services Assessment"
+    ],
+    "laboratorios": [],
+    "evidencia": [
+      "https://drive.google.com/file/d/1PlamEEA89fUJv6-jUlPWGmx0m48SfXu6/view?usp=sharing"
+    ]
+  }
+]
