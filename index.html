@@ -163,7 +163,7 @@
       font-weight: 600;
     }
 
-    /* Main Container */
+    /* Main Content */
     .aws-main-content {
       flex: 1;
       padding: 24px 32px;
@@ -707,7 +707,6 @@
         <!-- PESTAÑA 3: Configuración y Datos (Endpoint JSON + Import/Export) -->
         <div class="tab-content" id="tab-configuracion">
           
-          <!-- Origen de Datos Fijo -->
           <div class="settings-card">
             <div class="settings-card-header">
               <h3>
@@ -718,7 +717,7 @@
             </div>
             
             <div class="config-input-row">
-              <input type="text" id="jsonPathInput" value="./bitacora_sesiones.json" placeholder="./bitacora_sesiones.json" />
+              <input type="text" id="jsonPathInput" value="./sesiones.json" placeholder="./sesiones.json" />
               <button class="aws-btn aws-btn-secondary" onclick="loadFromStaticPath()">
                 Cargar
               </button>
@@ -728,7 +727,6 @@
             </div>
           </div>
 
-          <!-- Operaciones Manuales de Respaldo -->
           <div class="settings-card">
             <div class="settings-card-header">
               <h3>Importación y Respaldo Local</h3>
@@ -755,16 +753,14 @@
     let entries = [];
     let isEditing = false;
     const STORAGE_KEY = "aws_fixed_json_path";
+    const DEFAULT_JSON_PATH = "./sesiones.json";
 
     document.addEventListener("DOMContentLoaded", () => {
-      const savedPath = localStorage.getItem(STORAGE_KEY);
-      if (savedPath) {
-        document.getElementById("jsonPathInput").value = savedPath;
-      }
+      const savedPath = localStorage.getItem(STORAGE_KEY) || DEFAULT_JSON_PATH;
+      document.getElementById("jsonPathInput").value = savedPath;
       loadFromStaticPath(false);
     });
 
-    // Control de pestañas y sincronización de sidebar
     function switchTab(tabId) {
       document.querySelectorAll(".tab-content").forEach(el => el.classList.remove("active"));
       document.querySelectorAll(".aws-tab-item").forEach(el => el.classList.remove("active"));
@@ -787,7 +783,6 @@
       switchTab('tab-formulario');
     }
 
-    // Guardar ruta fija en localStorage
     function saveStaticPath() {
       const path = document.getElementById("jsonPathInput").value.trim();
       if (!path) return;
@@ -795,13 +790,11 @@
       alert("Ruta fijada en el navegador: " + path);
     }
 
-    // Cargar JSON desde la ruta fija
     async function loadFromStaticPath(showAlert = true) {
-      const path = document.getElementById("jsonPathInput").value.trim();
-      if (!path) return;
+      const path = document.getElementById("jsonPathInput").value.trim() || DEFAULT_JSON_PATH;
 
       try {
-        const res = await fetch(path);
+        const res = await fetch(path, { cache: "no-store" });
         if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
         const data = await res.json();
         if (Array.isArray(data)) {
@@ -825,7 +818,6 @@
       }
     }
 
-    // Formateadores y arrays
     function parseLines(text) {
       if (!text) return [];
       return text.split("\n").map(l => l.trim()).filter(l => l.length > 0);
@@ -837,7 +829,6 @@
       return [];
     }
 
-    // Actualizar métricas KPI
     function updateMetrics() {
       document.getElementById("kpi-total-sesiones").textContent = entries.length;
       document.getElementById("tabCounter").textContent = entries.length;
@@ -848,7 +839,6 @@
       document.getElementById("kpi-total-evals").textContent = sumArray('evaluaciones');
     }
 
-    // Renderizado de tabla
     function renderTable(dataToRender = entries) {
       updateMetrics();
       const tbody = document.getElementById("tableBody");
@@ -905,7 +895,6 @@
       renderTable(filtered);
     }
 
-    // Formularios
     function handleFormSubmit(e) {
       e.preventDefault();
       const id = document.getElementById("entryId").value;
@@ -967,13 +956,12 @@
       }
     }
 
-    // Exportar & Importar
     function exportJSON() {
       if (entries.length === 0) return alert("No hay datos para exportar.");
       const blob = new Blob([JSON.stringify(entries, null, 2)], { type: "application/json" });
       const a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
-      a.download = "bitacora_sesiones.json";
+      a.download = "sesiones.json";
       a.click();
       URL.revokeObjectURL(a.href);
     }
