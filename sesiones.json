@@ -41,7 +41,7 @@
   },
   {
     "id": 1789065745973,
-    "fecha": "2026-09-11",
+    "fecha": "2026-09-10",
     "temas": [
       "AWS Certified AI Practitioner (16 preguntas resueltas)",
       "Preparación de sustentación de refuerzo para AWS IA & ML Services Assessment"
@@ -51,7 +51,8 @@
     ],
     "laboratorios": [],
     "evidencia": [
-      "https://drive.google.com/file/d/1PlamEEA89fUJv6-jUlPWGmx0m48SfXu6/view?usp=sharing"
+      "https://drive.google.com/file/d/1PlamEEA89fUJv6-jUlPWGmx0m48SfXu6/view?usp=sharing",
+      "https://docs.google.com/document/d/1T5yzQu_ztqC-MNx2Z6gDrNTti3Bo4UaBQ2WXF8PlWy0/edit?usp=sharing"
     ]
   }
 ]
