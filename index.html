@@ -18,13 +18,18 @@
       --aws-text-muted: #879596;
       --aws-orange: #ec7211;
       --aws-orange-hover: #eb5f07;
+      --aws-orange-light: #fff8f2;
       --aws-blue: #0972d3;
       --aws-blue-hover: #033160;
       --aws-blue-light: #f1faff;
       --aws-green: #037f0c;
+      --aws-green-light: #f2fcf3;
+      --aws-purple: #6b46c1;
+      --aws-purple-light: #faf5ff;
       --aws-danger: #d91535;
       --aws-danger-hover: #9e0e24;
-      --aws-shadow-card: 0 1px 1px 0 rgba(0,28,36,0.1), 1px 1px 1px 0 rgba(0,28,36,0.15);
+      --aws-shadow-card: 0 1px 3px rgba(0, 28, 36, 0.08), 0 1px 2px rgba(0, 28, 36, 0.12);
+      --aws-radius: 4px;
     }
 
     * {
@@ -37,8 +42,8 @@
     body {
       background-color: var(--aws-page-bg);
       color: var(--aws-text-primary);
-      font-size: 14px;
-      line-height: 1.4;
+      font-size: 13.5px;
+      line-height: 1.45;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
@@ -75,35 +80,35 @@
     }
 
     .aws-logo svg {
-      width: 26px;
-      height: 26px;
+      width: 24px;
+      height: 24px;
       fill: var(--aws-orange);
     }
 
     .aws-service-name {
       color: #d5dbdb;
-      font-size: 14px;
+      font-size: 13.5px;
       padding-left: 14px;
       border-left: 1px solid var(--aws-border-dark);
-      font-weight: 400;
+      font-weight: 500;
     }
 
     .aws-top-right {
       display: flex;
       align-items: center;
       gap: 16px;
-      font-size: 13px;
+      font-size: 12.5px;
     }
 
     .aws-region-pill {
       display: flex;
       align-items: center;
       gap: 6px;
-      background: rgba(255, 255, 255, 0.08);
-      padding: 3px 10px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 4px 10px;
       border-radius: 12px;
       font-size: 12px;
-      color: #d5dbdb;
+      color: #eaeded;
     }
 
     .dot-status {
@@ -111,37 +116,38 @@
       height: 8px;
       border-radius: 50%;
       background-color: #00ca72;
+      box-shadow: 0 0 6px #00ca72;
     }
 
-    /* Layout Workspace */
+    /* Workspace */
     .app-workspace {
       display: flex;
       flex: 1;
     }
 
-    /* Sidebar Navigation */
+    /* Sidebar */
     .aws-sidebar {
-      width: 250px;
+      width: 240px;
       background-color: #ffffff;
-      border-right: 1px solid var(--aws-border);
-      padding: 24px 0;
+      border-right: 1px solid var(--aws-border-subtle);
+      padding: 20px 0;
       display: flex;
       flex-direction: column;
     }
 
     .sidebar-section-title {
-      padding: 0 24px;
+      padding: 0 20px;
       font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--aws-text-secondary);
+      letter-spacing: 0.8px;
+      color: var(--aws-text-muted);
       margin-bottom: 8px;
     }
 
     .sidebar-link {
-      padding: 10px 24px;
-      font-size: 14px;
+      padding: 9px 20px;
+      font-size: 13.5px;
       color: var(--aws-text-secondary);
       text-decoration: none;
       display: flex;
@@ -149,6 +155,7 @@
       gap: 12px;
       border-left: 3px solid transparent;
       cursor: pointer;
+      transition: all 0.15s ease;
     }
 
     .sidebar-link:hover {
@@ -167,7 +174,7 @@
     .aws-main-content {
       flex: 1;
       padding: 24px 32px;
-      max-width: 1400px;
+      max-width: 1440px;
     }
 
     .page-title-row {
@@ -175,7 +182,7 @@
     }
 
     .page-title h1 {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 700;
       color: var(--aws-text-primary);
     }
@@ -183,67 +190,95 @@
     .page-title p {
       font-size: 13px;
       color: var(--aws-text-secondary);
-      margin-top: 4px;
+      margin-top: 3px;
     }
 
-    /* KPI Summary Cards */
+    /* KPI Grid */
     .kpi-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 16px;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
     .kpi-card {
       background: #ffffff;
-      border: 1px solid var(--aws-border);
-      border-radius: 2px;
-      padding: 14px 18px;
+      border: 1px solid var(--aws-border-subtle);
+      border-radius: var(--aws-radius);
+      padding: 16px 18px;
       box-shadow: var(--aws-shadow-card);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 3px solid transparent;
+      transition: transform 0.15s ease;
     }
 
+    .kpi-card:hover {
+      transform: translateY(-1px);
+    }
+
+    .kpi-card.c-blue { border-top-color: var(--aws-blue); }
+    .kpi-card.c-orange { border-top-color: var(--aws-orange); }
+    .kpi-card.c-purple { border-top-color: var(--aws-purple); }
+    .kpi-card.c-green { border-top-color: var(--aws-green); }
+
     .kpi-card-label {
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 11px;
+      font-weight: 700;
       text-transform: uppercase;
       color: var(--aws-text-secondary);
       letter-spacing: 0.5px;
     }
 
     .kpi-card-value {
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 700;
       color: var(--aws-text-primary);
-      margin-top: 4px;
+      margin-top: 2px;
     }
+
+    .kpi-icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .kpi-icon-box.blue { background: var(--aws-blue-light); color: var(--aws-blue); }
+    .kpi-icon-box.orange { background: var(--aws-orange-light); color: var(--aws-orange); }
+    .kpi-icon-box.purple { background: var(--aws-purple-light); color: var(--aws-purple); }
+    .kpi-icon-box.green { background: var(--aws-green-light); color: var(--aws-green); }
 
     /* Tabs UI */
     .aws-tabs-container {
       background: #ffffff;
-      border: 1px solid var(--aws-border);
-      border-radius: 2px;
+      border: 1px solid var(--aws-border-subtle);
+      border-radius: var(--aws-radius);
       box-shadow: var(--aws-shadow-card);
     }
 
     .aws-tab-bar {
       display: flex;
-      border-bottom: 2px solid var(--aws-border);
+      border-bottom: 1px solid var(--aws-border-subtle);
       background-color: #fafafa;
       padding: 0 16px;
     }
 
     .aws-tab-item {
       padding: 12px 20px;
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 600;
       color: var(--aws-text-secondary);
-      border-bottom: 3px solid transparent;
-      margin-bottom: -2px;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
       cursor: pointer;
       display: flex;
       align-items: center;
       gap: 8px;
-      transition: color 0.15s;
+      transition: all 0.15s;
     }
 
     .aws-tab-item:hover {
@@ -259,9 +294,10 @@
     .tab-badge {
       background: #eaeded;
       font-size: 11px;
-      padding: 2px 7px;
+      padding: 1px 7px;
       border-radius: 10px;
       font-weight: 700;
+      color: var(--aws-text-secondary);
     }
 
     .aws-tab-item.active .tab-badge {
@@ -278,12 +314,12 @@
       display: block;
     }
 
-    /* Table & Controls */
+    /* Controls Bar */
     .table-controls {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       gap: 12px;
       flex-wrap: wrap;
     }
@@ -294,18 +330,26 @@
     }
 
     .search-input {
-      padding: 6px 12px 6px 30px;
+      padding: 8px 12px 8px 34px;
       border: 1px solid var(--aws-border-subtle);
-      border-radius: 2px;
+      border-radius: var(--aws-radius);
       font-size: 13px;
-      width: 340px;
-      background: #fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="%23545b64" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>') no-repeat 10px center;
+      width: 360px;
+      background: #fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="%23545b64" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>') no-repeat 10px center;
+      transition: all 0.2s;
     }
 
+    .search-input:focus {
+      outline: none;
+      border-color: var(--aws-blue);
+      box-shadow: 0 0 0 2px rgba(9, 114, 211, 0.2);
+    }
+
+    /* Table Styling */
     .aws-table-wrapper {
-      border: 1px solid var(--aws-border);
-      border-radius: 2px;
-      overflow-x: auto;
+      border: 1px solid var(--aws-border-subtle);
+      border-radius: var(--aws-radius);
+      overflow: hidden;
     }
 
     .aws-table {
@@ -314,63 +358,191 @@
       text-align: left;
     }
 
-    .aws-table th, 
-    .aws-table td {
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--aws-border);
-      vertical-align: top;
-      font-size: 13px;
-    }
-
     .aws-table th {
-      background: #fafafa;
+      background: #f7f9fa;
       color: var(--aws-text-secondary);
       font-weight: 700;
-      font-size: 12px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.6px;
+      padding: 12px 16px;
       border-bottom: 1px solid var(--aws-border-subtle);
     }
 
-    .aws-table tbody tr:hover {
-      background-color: #f7f9fa;
+    .aws-table td {
+      padding: 16px;
+      border-bottom: 1px solid var(--aws-border);
+      vertical-align: top;
+      font-size: 13px;
+      background: #fff;
     }
 
-    .item-list {
-      list-style: none;
+    .aws-table tbody tr:hover td {
+      background-color: #fafbfc;
+    }
+
+    /* Componentes visuales renovados para listas y evidencias */
+    
+    /* 1. Date Widget */
+    .date-badge-box {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #f8fafc;
+      border: 1px solid var(--aws-border-subtle);
+      border-radius: 6px;
+      padding: 6px 10px;
+      min-width: 82px;
+      text-align: center;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+    }
+
+    .date-badge-box .date-month {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--aws-blue);
+      letter-spacing: 0.5px;
+    }
+
+    .date-badge-box .date-day {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--aws-text-primary);
+      line-height: 1.1;
+      margin: 1px 0;
+    }
+
+    .date-badge-box .date-year {
+      font-size: 10px;
+      color: var(--aws-text-muted);
+      font-weight: 500;
+    }
+
+    /* 2. Visual Chips & Tags */
+    .tag-container {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    /* Temas */
+    .theme-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 12.5px;
+      color: var(--aws-text-primary);
+      background: #fbfcfd;
+      padding: 5px 9px;
+      border-radius: 4px;
+      border: 1px solid #edf1f3;
+    }
+
+    .theme-bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--aws-orange);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    /* Labs (Terminal / Code Style) */
+    .lab-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--aws-blue-light);
+      border: 1px solid #d0e7fa;
+      color: #054f94;
+      padding: 4px 9px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    }
+
+    .lab-chip svg {
+      width: 13px;
+      height: 13px;
+      stroke: #0972d3;
+      flex-shrink: 0;
+    }
+
+    /* Evaluaciones */
+    .eval-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--aws-purple-light);
+      border: 1px solid #ebd9fc;
+      color: #552882;
+      padding: 4px 9px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .eval-chip svg {
+      width: 13px;
+      height: 13px;
+      color: var(--aws-purple);
+      flex-shrink: 0;
+    }
+
+    /* 3. Botones de Evidencia Card-Style */
+    .evidence-group {
       display: flex;
       flex-direction: column;
       gap: 5px;
     }
 
-    .item-list li {
-      position: relative;
-      padding-left: 14px;
-      line-height: 1.4;
-    }
-
-    .item-list li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--aws-orange);
-      font-size: 16px;
-    }
-
-    .evidence-pill-link {
+    .evidence-btn {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      color: var(--aws-blue);
+      gap: 8px;
+      padding: 6px 10px;
+      background: #ffffff;
+      border: 1px solid var(--aws-border-subtle);
+      border-radius: 4px;
       text-decoration: none;
+      color: var(--aws-text-primary);
+      font-size: 12px;
       font-weight: 600;
-      margin-bottom: 4px;
-      word-break: break-all;
+      transition: all 0.15s ease;
+      max-width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .evidence-pill-link:hover {
-      text-decoration: underline;
-      color: var(--aws-blue-hover);
+    .evidence-btn:hover {
+      background: var(--aws-blue-light);
+      border-color: var(--aws-blue);
+      color: var(--aws-blue);
+      box-shadow: 0 1px 3px rgba(9, 114, 211, 0.15);
+    }
+
+    .evidence-btn .ev-icon {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    .evidence-btn .ev-arrow {
+      margin-left: auto;
+      color: var(--aws-text-muted);
+      font-size: 11px;
+    }
+
+    /* Estado vacío sutil */
+    .empty-pill {
+      font-size: 11.5px;
+      color: var(--aws-text-muted);
+      font-style: italic;
+      padding: 3px 0;
     }
 
     /* Form Styles */
@@ -387,7 +559,7 @@
     .form-field {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 5px;
     }
 
     .form-field label {
@@ -399,25 +571,24 @@
     .form-field-desc {
       font-size: 12px;
       color: var(--aws-text-secondary);
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
     .form-field input,
     .form-field textarea {
-      padding: 8px 10px;
+      padding: 8px 11px;
       border: 1px solid var(--aws-border-subtle);
-      border-radius: 2px;
+      border-radius: var(--aws-radius);
       font-size: 13px;
       font-family: inherit;
+      transition: border-color 0.15s;
     }
 
     .form-field input:focus,
-    .form-field textarea:focus,
-    .search-input:focus,
-    .config-input-row input:focus {
+    .form-field textarea:focus {
       outline: none;
       border-color: var(--aws-blue);
-      box-shadow: 0 0 0 1px var(--aws-blue);
+      box-shadow: 0 0 0 2px rgba(9, 114, 211, 0.15);
     }
 
     .form-footer {
@@ -430,12 +601,100 @@
       border-top: 1px solid var(--aws-border);
     }
 
-    /* Settings Tab Panels */
+    /* Buttons */
+    .aws-btn {
+      height: 32px;
+      padding: 0 16px;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: var(--aws-radius);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .aws-btn-primary {
+      background: var(--aws-orange);
+      color: #fff;
+      border: 1px solid var(--aws-orange);
+    }
+
+    .aws-btn-primary:hover {
+      background: var(--aws-orange-hover);
+    }
+
+    .aws-btn-secondary {
+      background: #fff;
+      color: var(--aws-text-primary);
+      border: 1px solid var(--aws-border-subtle);
+    }
+
+    .aws-btn-secondary:hover {
+      background: #f7f9fa;
+      border-color: var(--aws-text-secondary);
+    }
+
+    .action-btn-group {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+    }
+
+    .action-icon-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      padding: 5px 8px;
+      cursor: pointer;
+      color: var(--aws-text-secondary);
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s;
+    }
+
+    .action-icon-btn:hover {
+      background: #f0f3f5;
+      color: var(--aws-blue);
+      border-color: var(--aws-border-subtle);
+    }
+
+    .action-icon-btn.danger:hover {
+      background: #fff0f2;
+      color: var(--aws-danger);
+      border-color: #ffd0d6;
+    }
+
+    /* Notification banner */
+    .aws-alert {
+      padding: 10px 16px;
+      margin-bottom: 16px;
+      border-radius: var(--aws-radius);
+      font-size: 13px;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .aws-alert.info {
+      background: var(--aws-blue-light);
+      border: 1px solid var(--aws-blue);
+      color: #033160;
+    }
+
+    /* Settings cards */
     .settings-card {
-      border: 1px solid var(--aws-border);
-      border-radius: 2px;
+      border: 1px solid var(--aws-border-subtle);
+      border-radius: var(--aws-radius);
       padding: 20px;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       background: #ffffff;
     }
 
@@ -446,130 +705,37 @@
     }
 
     .settings-card-header h3 {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
-      color: var(--aws-text-primary);
       display: flex;
       align-items: center;
       gap: 8px;
-    }
-
-    .settings-card-header p {
-      font-size: 13px;
-      color: var(--aws-text-secondary);
-      margin-top: 4px;
-    }
-
-    .config-input-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      max-width: 800px;
-      flex-wrap: wrap;
-    }
-
-    .config-input-row input {
-      flex: 1;
-      min-width: 260px;
-      font-family: monospace;
-      font-size: 13px;
-      padding: 7px 10px;
-      border: 1px solid var(--aws-border-subtle);
-      border-radius: 2px;
-      background: #fafafa;
-    }
-
-    .storage-actions-wrap {
-      display: flex;
-      align-items: center;
-      gap: 12px;
     }
 
     .tag-source {
       background-color: #e9ebed;
       color: var(--aws-text-secondary);
       font-weight: 700;
-      font-size: 11px;
-      padding: 3px 6px;
+      font-size: 10.5px;
+      padding: 2px 6px;
       border-radius: 2px;
     }
 
-    /* Buttons */
-    .aws-btn {
-      height: 32px;
-      padding: 0 16px;
-      font-size: 13px;
-      font-weight: 700;
-      border-radius: 2px;
-      cursor: pointer;
-      display: inline-flex;
+    .config-input-row {
+      display: flex;
+      gap: 10px;
       align-items: center;
-      justify-content: center;
-      gap: 6px;
-      text-decoration: none;
+      flex-wrap: wrap;
     }
 
-    .aws-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    .aws-btn-primary {
-      background: var(--aws-orange);
-      color: #fff;
-      border: 1px solid var(--aws-orange);
-    }
-
-    .aws-btn-primary:hover:not(:disabled) {
-      background: var(--aws-orange-hover);
-    }
-
-    .aws-btn-secondary {
-      background: #fff;
-      color: var(--aws-text-primary);
+    .config-input-row input {
+      flex: 1;
+      min-width: 280px;
+      padding: 8px 10px;
       border: 1px solid var(--aws-border-subtle);
-    }
-
-    .aws-btn-secondary:hover:not(:disabled) {
-      background: #fafafa;
-      border-color: var(--aws-text-secondary);
-    }
-
-    .aws-link-btn {
-      background: none;
-      border: none;
-      color: var(--aws-blue);
-      cursor: pointer;
+      border-radius: var(--aws-radius);
+      font-family: monospace;
       font-size: 13px;
-      font-weight: 600;
-    }
-
-    .aws-link-btn:hover {
-      text-decoration: underline;
-    }
-
-    .aws-link-btn.danger {
-      color: var(--aws-danger);
-    }
-
-    .aws-link-btn.danger:hover {
-      color: var(--aws-danger-hover);
-    }
-
-    /* Notification banner */
-    .aws-alert {
-      padding: 10px 16px;
-      margin-bottom: 16px;
-      border-radius: 2px;
-      font-size: 13px;
-      display: none;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .aws-alert.info {
-      background: var(--aws-blue-light);
-      border: 1px solid var(--aws-blue);
-      color: #033160;
     }
   </style>
 </head>
@@ -619,7 +785,7 @@
       <div class="page-title-row">
         <div class="page-title">
           <h1>Bitácora de Sesiones AWS</h1>
-          <p>Gestiona, supervisa y sincroniza automáticamente las sesiones directamente en tu repositorio de GitHub.</p>
+          <p>Gestiona, supervisa y sincroniza automáticamente las sesiones de capacitación en tu repositorio.</p>
         </div>
       </div>
 
@@ -630,21 +796,41 @@
 
       <!-- KPI Summary -->
       <div class="kpi-grid">
-        <div class="kpi-card">
-          <div class="kpi-card-label">Sesiones Totales</div>
-          <div class="kpi-card-value" id="kpi-total-sesiones">0</div>
+        <div class="kpi-card c-blue">
+          <div>
+            <div class="kpi-card-label">Sesiones Totales</div>
+            <div class="kpi-card-value" id="kpi-total-sesiones">0</div>
+          </div>
+          <div class="kpi-icon-box blue">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          </div>
         </div>
-        <div class="kpi-card">
-          <div class="kpi-card-label">Temas Dictados</div>
-          <div class="kpi-card-value" id="kpi-total-temas">0</div>
+        <div class="kpi-card c-orange">
+          <div>
+            <div class="kpi-card-label">Temas Dictados</div>
+            <div class="kpi-card-value" id="kpi-total-temas">0</div>
+          </div>
+          <div class="kpi-icon-box orange">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          </div>
         </div>
-        <div class="kpi-card">
-          <div class="kpi-card-label">Laboratorios</div>
-          <div class="kpi-card-value" id="kpi-total-labs">0</div>
+        <div class="kpi-card c-purple">
+          <div>
+            <div class="kpi-card-label">Laboratorios</div>
+            <div class="kpi-card-value" id="kpi-total-labs">0</div>
+          </div>
+          <div class="kpi-icon-box purple">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          </div>
         </div>
-        <div class="kpi-card">
-          <div class="kpi-card-label">Evaluaciones</div>
-          <div class="kpi-card-value" id="kpi-total-evals">0</div>
+        <div class="kpi-card c-green">
+          <div>
+            <div class="kpi-card-label">Evaluaciones</div>
+            <div class="kpi-card-value" id="kpi-total-evals">0</div>
+          </div>
+          <div class="kpi-icon-box green">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          </div>
         </div>
       </div>
 
@@ -669,7 +855,8 @@
             <input type="text" id="searchInput" class="search-input" placeholder="Buscar por tema, laboratorio o fecha..." oninput="filterTable()" />
             <div class="table-actions">
               <button class="aws-btn aws-btn-secondary" id="btnManualSync" onclick="commitToGitHub()">
-                ☁ Guardar en GitHub
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 18a3.5 3.5 0 0 0 0-7h-1A5 5 0 0 0 8 8a3.5 3.5 0 0 0 0 7h11z"></path></svg>
+                Guardar en GitHub
               </button>
               <button class="aws-btn aws-btn-primary" onclick="prepareNewForm()">
                 + Crear Sesión
@@ -681,16 +868,16 @@
             <table class="aws-table">
               <thead>
                 <tr>
-                  <th style="width: 120px;">Fecha</th>
-                  <th>Temas Teóricos</th>
-                  <th>Evaluaciones</th>
-                  <th>Laboratorios</th>
-                  <th style="width: 170px;">Evidencias</th>
+                  <th style="width: 105px;">Fecha</th>
+                  <th style="width: 25%;">Temas Teóricos</th>
+                  <th style="width: 20%;">Laboratorios</th>
+                  <th style="width: 20%;">Evaluaciones</th>
+                  <th>Evidencias</th>
                   <th style="width: 110px; text-align: right;">Acciones</th>
                 </tr>
               </thead>
               <tbody id="tableBody">
-                <!-- Filas renderizadas dinámicamente -->
+                <!-- Dinámico -->
               </tbody>
             </table>
           </div>
@@ -705,7 +892,7 @@
               <div class="form-field form-full">
                 <label for="fecha">Fecha de la Sesión *</label>
                 <div class="form-field-desc">Selecciona el día en que se impartió el módulo o sesión de refuerzo.</div>
-                <input type="date" id="fecha" required style="max-width: 280px;" />
+                <input type="date" id="fecha" required style="max-width: 260px;" />
               </div>
 
               <div class="form-field">
@@ -715,15 +902,15 @@
               </div>
 
               <div class="form-field">
-                <label for="evaluaciones">Evaluaciones Realizadas</label>
-                <div class="form-field-desc">Escribe una evaluación o simulacro por línea.</div>
-                <textarea id="evaluaciones" rows="4" placeholder="Quiz de Networking&#10;Simulador AWS Certified AI Practitioner"></textarea>
+                <label for="laboratorios">Laboratorios Prácticos</label>
+                <div class="form-field-desc">Escribe cada laboratorio o ejercicio por línea.</div>
+                <textarea id="laboratorios" rows="4" placeholder="Lab 1: Configurar Subnets y Gateway&#10;Lab 2: VPC Peering"></textarea>
               </div>
 
               <div class="form-field">
-                <label for="laboratorios">Laboratorios Prácticos</label>
-                <div class="form-field-desc">Escribe cada laboratorio o ejercicio por línea.</div>
-                <textarea id="laboratorios" rows="3" placeholder="Lab 1: Configurar Subnets y Gateway&#10;Lab 2: VPC Peering"></textarea>
+                <label for="evaluaciones">Evaluaciones Realizadas</label>
+                <div class="form-field-desc">Escribe una evaluación o simulacro por línea.</div>
+                <textarea id="evaluaciones" rows="3" placeholder="Quiz de Networking&#10;Simulador AWS Certified AI Practitioner"></textarea>
               </div>
 
               <div class="form-field">
@@ -744,29 +931,26 @@
           </form>
         </div>
 
-        <!-- PESTAÑA 3: Configuración, API de GitHub y Respaldo -->
+        <!-- PESTAÑA 3: Configuración -->
         <div class="tab-content" id="tab-configuracion">
-          
           <div class="settings-card">
             <div class="settings-card-header">
               <h3>
                 <span class="tag-source">GITHUB API</span>
                 Conexión y Escritura Automática en GitHub
               </h3>
-              <p>Guarda tu Personal Access Token (PAT) para que la bitácora envíe commits automáticamente a <strong>dcsoft-ux/informes</strong>.</p>
+              <p style="font-size:12.5px; color:var(--aws-text-secondary); margin-top:4px;">
+                Guarda tu Personal Access Token (PAT) para enviar commits directamente a <strong>dcsoft-ux/informes</strong>.
+              </p>
             </div>
             
             <div class="config-input-row" style="margin-bottom: 12px;">
               <input type="password" id="ghTokenInput" placeholder="github_pat_..." />
-              <button class="aws-btn aws-btn-primary" onclick="saveGitHubToken()">
-                Guardar Token
-              </button>
-              <button class="aws-btn aws-btn-secondary" onclick="clearGitHubToken()">
-                Eliminar Token
-              </button>
+              <button class="aws-btn aws-btn-primary" onclick="saveGitHubToken()">Guardar Token</button>
+              <button class="aws-btn aws-btn-secondary" onclick="clearGitHubToken()">Eliminar Token</button>
             </div>
             <p style="font-size: 12px; color: var(--aws-text-secondary);">
-              El token solo se guarda en el <code>localStorage</code> de tu navegador actual; nunca viaja a terceros ni queda expuesto en tu código.
+              El token solo se almacena en el <code>localStorage</code> del navegador; nunca viaja a servidores intermedios.
             </p>
           </div>
 
@@ -776,34 +960,31 @@
                 <span class="tag-source">DATA SOURCE</span>
                 Ruta del Archivo JSON
               </h3>
-              <p>Ruta relativa al archivo de datos dentro de tu repositorio.</p>
+              <p style="font-size:12.5px; color:var(--aws-text-secondary); margin-top:4px;">
+                Ruta relativa o pública hacia el archivo <code>sesiones.json</code>.
+              </p>
             </div>
             
             <div class="config-input-row">
-              <input type="text" id="jsonPathInput" value="./sesiones.json" placeholder="./sesiones.json" />
-              <button class="aws-btn aws-btn-secondary" onclick="loadFromStaticPath()">
-                Recargar Datos
-              </button>
+              <input type="text" id="jsonPathInput" value="./sesiones.json" />
+              <button class="aws-btn aws-btn-secondary" onclick="loadFromStaticPath()">Recargar Datos</button>
             </div>
           </div>
 
           <div class="settings-card">
             <div class="settings-card-header">
-              <h3>Importación y Respaldo Manual</h3>
-              <p>Puedes importar un archivo .json de forma manual o exportar un respaldo a tu disco local.</p>
+              <h3>Respaldo y Carga Local</h3>
+              <p style="font-size:12.5px; color:var(--aws-text-secondary); margin-top:4px;">
+                Descarga una copia de seguridad o restaura los datos desde un archivo local.
+              </p>
             </div>
 
-            <div class="storage-actions-wrap">
+            <div style="display:flex; gap:10px;">
               <input type="file" id="jsonFileInput" accept=".json" style="display:none;" onchange="importJSON(event)" />
-              <button class="aws-btn aws-btn-secondary" onclick="document.getElementById('jsonFileInput').click()">
-                Importar JSON
-              </button>
-              <button class="aws-btn aws-btn-secondary" onclick="exportJSON()">
-                Descargar JSON
-              </button>
+              <button class="aws-btn aws-btn-secondary" onclick="document.getElementById('jsonFileInput').click()">Importar JSON</button>
+              <button class="aws-btn aws-btn-secondary" onclick="exportJSON()">Descargar JSON</button>
             </div>
           </div>
-
         </div>
       </div>
     </main>
@@ -853,7 +1034,7 @@
       const token = document.getElementById("ghTokenInput").value.trim();
       if (!token) return alert("Por favor ingresa un token válido.");
       localStorage.setItem(TOKEN_KEY, token);
-      alert("Token guardado localmente de forma segura.");
+      alert("Token guardado localmente.");
     }
 
     function clearGitHubToken() {
@@ -873,7 +1054,6 @@
       }
     }
 
-    // Función auxiliar para ordenar por fecha de forma descendente (más reciente arriba)
     function sortByDateDesc(a, b) {
       const dateA = new Date(a.fecha || 0).getTime();
       const dateB = new Date(b.fecha || 0).getTime();
@@ -903,18 +1083,17 @@
             evidencia: ensureArray(item.evidencia)
           }));
           
-          // Ordenar cronológicamente al cargar
           entries.sort(sortByDateDesc);
           renderTable();
 
           if (showAlert) {
-            alert("Datos recargados exitosamente desde: " + path);
+            alert("Datos recargados exitosamente.");
             switchTab('tab-registros');
           }
         }
       } catch (err) {
         console.warn("Fallo al leer JSON:", err);
-        if (showAlert) alert("No se pudo cargar el JSON. Revisa la ruta o la consola.");
+        if (showAlert) alert("No se pudo cargar el JSON.");
       }
     }
 
@@ -929,7 +1108,6 @@
 
       try {
         const apiUrl = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE_PATH}`;
-
         const getRes = await fetch(apiUrl, {
           headers: {
             "Authorization": `Bearer ${token}`,
@@ -943,7 +1121,6 @@
           currentSha = fileData.sha;
         }
 
-        // Asegurarse de que el JSON que se suba a GitHub también quede ordenado cronológicamente
         entries.sort(sortByDateDesc);
         const jsonString = JSON.stringify(entries, null, 2);
         const base64Content = btoa(unescape(encodeURIComponent(jsonString)));
@@ -993,9 +1170,7 @@
         entries.push({ id: Date.now(), ...payload });
       }
 
-      // Ordenar por fecha tras modificar o crear
       entries.sort(sortByDateDesc);
-
       cancelEdit();
       switchTab('tab-registros');
       renderTable();
@@ -1019,7 +1194,6 @@
 
       document.getElementById("tabFormTitle").textContent = "Editar Sesión (" + entry.fecha + ")";
       document.getElementById("submitBtn").textContent = "Guardar y Sincronizar";
-
       switchTab('tab-formulario');
     }
 
@@ -1068,48 +1242,156 @@
       document.getElementById("kpi-total-evals").textContent = sumArray('evaluaciones');
     }
 
+    /* RENDERIZADO VISUAL ELEVADO */
+
+    function renderDateBox(fechaStr) {
+      if (!fechaStr) return `<span class="empty-pill">Sin fecha</span>`;
+      const parts = fechaStr.split("-");
+      if (parts.length === 3) {
+        const months = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
+        const monthIdx = parseInt(parts[1], 10) - 1;
+        const monthName = months[monthIdx] || parts[1];
+        return `
+          <div class="date-badge-box">
+            <span class="date-month">${monthName}</span>
+            <span class="date-day">${parts[2]}</span>
+            <span class="date-year">${parts[0]}</span>
+          </div>
+        `;
+      }
+      return `<strong>${escapeHtml(fechaStr)}</strong>`;
+    }
+
+    function renderTemas(temas) {
+      const arr = ensureArray(temas);
+      if (arr.length === 0) return `<span class="empty-pill">Sin temas registrados</span>`;
+      return `
+        <div class="tag-container">
+          ${arr.map(t => `
+            <div class="theme-item">
+              <span class="theme-bullet"></span>
+              <span>${escapeHtml(t)}</span>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function renderLaboratorios(labs) {
+      const arr = ensureArray(labs);
+      if (arr.length === 0) return `<span class="empty-pill">Sin laboratorios</span>`;
+      return `
+        <div class="tag-container">
+          ${arr.map(l => `
+            <div class="lab-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+              <span>${escapeHtml(l)}</span>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function renderEvaluaciones(evals) {
+      const arr = ensureArray(evals);
+      if (arr.length === 0) return `<span class="empty-pill">Sin evaluaciones</span>`;
+      return `
+        <div class="tag-container">
+          ${arr.map(ev => `
+            <div class="eval-chip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <span>${escapeHtml(ev)}</span>
+            </div>
+          `).join("")}
+        </div>
+      `;
+    }
+
+    function getEvidenceMetadata(url) {
+      const u = url.toLowerCase();
+      if (u.includes("drive.google.com") || u.includes("docs.google.com")) {
+        return {
+          label: "Google Drive",
+          icon: `<svg class="ev-icon" viewBox="0 0 24 24" fill="#0F9D58"><path d="M7.71 3.5L1.15 15l3.43 6 6.56-11.5L7.71 3.5zm4.86 6.5l3.43 6h6.85l-3.43-6h-6.85zm1.43 2.5l-3.43 6h11.71l3.43-6H14z"/></svg>`
+        };
+      }
+      if (u.includes("github.com")) {
+        return {
+          label: "GitHub Repo",
+          icon: `<svg class="ev-icon" viewBox="0 0 24 24" fill="#24292e"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>`
+        };
+      }
+      if (u.includes("aws") || u.includes("s3")) {
+        return {
+          label: "AWS / S3",
+          icon: `<svg class="ev-icon" viewBox="0 0 24 24" fill="#ec7211"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>`
+        };
+      }
+      return {
+        label: "Evidencia",
+        icon: `<svg class="ev-icon" viewBox="0 0 24 24" fill="none" stroke="#0972d3" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>`
+      };
+    }
+
+    function renderEvidencias(evidencias) {
+      const arr = ensureArray(evidencias);
+      if (arr.length === 0) return `<span class="empty-pill">Sin evidencias</span>`;
+      return `
+        <div class="evidence-group">
+          ${arr.map((link, idx) => {
+            const meta = getEvidenceMetadata(link);
+            const label = arr.length > 1 ? `${meta.label} #${idx + 1}` : meta.label;
+            return `
+              <a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer" class="evidence-btn" title="${escapeHtml(link)}">
+                ${meta.icon}
+                <span>${label}</span>
+                <span class="ev-arrow">↗</span>
+              </a>
+            `;
+          }).join("")}
+        </div>
+      `;
+    }
+
     function renderTable(dataToRender = entries) {
       updateMetrics();
       const tbody = document.getElementById("tableBody");
 
       if (dataToRender.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:32px; color:#545b64;">No se encontraron registros de sesiones.</td></tr>`;
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" style="text-align:center; padding:48px 20px; color:#545b64;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#879596" stroke-width="1.5" style="margin-bottom:12px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              <div style="font-size:14px; font-weight:600; color:var(--aws-text-primary);">No se encontraron sesiones</div>
+              <div style="font-size:12.5px; margin-top:4px;">Crea una nueva sesión o ajusta el término de búsqueda.</div>
+            </td>
+          </tr>
+        `;
         return;
       }
 
-      // Asegurar que la lista visible esté ordenada por fecha descendente
       const sortedData = [...dataToRender].sort(sortByDateDesc);
 
       tbody.innerHTML = sortedData.map(entry => `
         <tr>
-          <td><strong>${escapeHtml(entry.fecha)}</strong></td>
-          <td>${renderList(entry.temas)}</td>
-          <td>${renderList(entry.evaluaciones)}</td>
-          <td>${renderList(entry.laboratorios)}</td>
+          <td>${renderDateBox(entry.fecha)}</td>
+          <td>${renderTemas(entry.temas)}</td>
+          <td>${renderLaboratorios(entry.laboratorios)}</td>
+          <td>${renderEvaluaciones(entry.evaluaciones)}</td>
           <td>${renderEvidencias(entry.evidencia)}</td>
-          <td style="text-align: right; white-space: nowrap;">
-            <button class="aws-link-btn" onclick="startEdit(${entry.id})">Editar</button>
-            <span style="color:#d5dbdb; margin: 0 4px;">|</span>
-            <button class="aws-link-btn danger" onclick="deleteEntry(${entry.id})">Eliminar</button>
+          <td>
+            <div class="action-btn-group">
+              <button class="action-icon-btn" onclick="startEdit(${entry.id})" title="Editar sesión">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                Editar
+              </button>
+              <button class="action-icon-btn danger" onclick="deleteEntry(${entry.id})" title="Eliminar sesión">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+              </button>
+            </div>
           </td>
         </tr>
       `).join("");
-    }
-
-    function renderList(items) {
-      const arr = ensureArray(items);
-      if (arr.length === 0) return `<span style="color:var(--aws-text-muted);">-</span>`;
-      return `<ul class="item-list">${arr.map(i => `<li>${escapeHtml(i)}</li>`).join("")}</ul>`;
-    }
-
-    function renderEvidencias(evidencias) {
-      const arr = ensureArray(evidencias);
-      if (arr.length === 0) return `<span style="color:var(--aws-text-muted);">-</span>`;
-      return arr.map((link, idx) => `
-        <a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer" class="evidence-pill-link">
-          Ver evidencia ${arr.length > 1 ? idx + 1 : ''} ↗
-        </a>
-      `).join("<br>");
     }
 
     function filterTable() {
