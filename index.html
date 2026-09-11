@@ -284,6 +284,13 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 16px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .table-actions {
+      display: flex;
+      gap: 8px;
     }
 
     .search-input {
@@ -458,10 +465,12 @@
       align-items: center;
       gap: 10px;
       max-width: 800px;
+      flex-wrap: wrap;
     }
 
     .config-input-row input {
       flex: 1;
+      min-width: 260px;
       font-family: monospace;
       font-size: 13px;
       padding: 7px 10px;
@@ -500,13 +509,18 @@
       text-decoration: none;
     }
 
+    .aws-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
     .aws-btn-primary {
       background: var(--aws-orange);
       color: #fff;
       border: 1px solid var(--aws-orange);
     }
 
-    .aws-btn-primary:hover {
+    .aws-btn-primary:hover:not(:disabled) {
       background: var(--aws-orange-hover);
     }
 
@@ -516,7 +530,7 @@
       border: 1px solid var(--aws-border-subtle);
     }
 
-    .aws-btn-secondary:hover {
+    .aws-btn-secondary:hover:not(:disabled) {
       background: #fafafa;
       border-color: var(--aws-text-secondary);
     }
@@ -540,6 +554,22 @@
 
     .aws-link-btn.danger:hover {
       color: var(--aws-danger-hover);
+    }
+
+    /* Notification banner */
+    .aws-alert {
+      padding: 10px 16px;
+      margin-bottom: 16px;
+      border-radius: 2px;
+      font-size: 13px;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .aws-alert.info {
+      background: var(--aws-blue-light);
+      border: 1px solid var(--aws-blue);
+      color: #033160;
     }
   </style>
 </head>
@@ -580,7 +610,7 @@
       <div class="sidebar-section-title" style="margin-top: 24px;">Administración</div>
       <a class="sidebar-link" onclick="switchTab('tab-configuracion')">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-        Configuración de JSON
+        Configuración y API
       </a>
     </aside>
 
@@ -589,8 +619,13 @@
       <div class="page-title-row">
         <div class="page-title">
           <h1>Bitácora de Sesiones AWS</h1>
-          <p>Gestiona, supervisa y audita el avance académico y los recursos de las sesiones de capacitación.</p>
+          <p>Gestiona, supervisa y sincroniza automáticamente las sesiones directamente en tu repositorio de GitHub.</p>
         </div>
+      </div>
+
+      <!-- Notification Banner -->
+      <div id="syncStatusBanner" class="aws-alert info">
+        <span id="syncStatusText">Sincronizando cambios con GitHub...</span>
       </div>
 
       <!-- KPI Summary -->
@@ -624,7 +659,7 @@
             <span id="tabFormTitle">Registrar Nueva Sesión</span>
           </div>
           <div class="aws-tab-item" id="btn-tab-configuracion" onclick="switchTab('tab-configuracion')">
-            <span>Configuración y Datos</span>
+            <span>Configuración y API</span>
           </div>
         </div>
 
@@ -632,9 +667,14 @@
         <div class="tab-content active" id="tab-registros">
           <div class="table-controls">
             <input type="text" id="searchInput" class="search-input" placeholder="Buscar por tema, laboratorio o fecha..." oninput="filterTable()" />
-            <button class="aws-btn aws-btn-primary" onclick="prepareNewForm()">
-              + Crear Sesión
-            </button>
+            <div class="table-actions">
+              <button class="aws-btn aws-btn-secondary" id="btnManualSync" onclick="commitToGitHub()">
+                ☁ Guardar en GitHub
+              </button>
+              <button class="aws-btn aws-btn-primary" onclick="prepareNewForm()">
+                + Crear Sesión
+              </button>
+            </div>
           </div>
 
           <div class="aws-table-wrapper">
@@ -650,7 +690,7 @@
                 </tr>
               </thead>
               <tbody id="tableBody">
-                <!-- Filas renderizadas -->
+                <!-- Filas renderizadas dinámicamente -->
               </tbody>
             </table>
           </div>
@@ -697,40 +737,63 @@
                   Cancelar
                 </button>
                 <button type="submit" id="submitBtn" class="aws-btn aws-btn-primary">
-                  Crear Registro
+                  Crear y Guardar
                 </button>
               </div>
             </div>
           </form>
         </div>
 
-        <!-- PESTAÑA 3: Configuración y Datos (Endpoint JSON + Import/Export) -->
+        <!-- PESTAÑA 3: Configuración, API de GitHub y Respaldo -->
         <div class="tab-content" id="tab-configuracion">
           
+          <!-- GitHub Personal Access Token Config -->
+          <div class="settings-card">
+            <div class="settings-card-header">
+              <h3>
+                <span class="tag-source">GITHUB API</span>
+                Conexión y Escritura Automática en GitHub
+              </h3>
+              <p>Guarda tu Personal Access Token (PAT) para que la bitácora envíe commits automáticamente a <strong>dcsoft-ux/informes</strong>.</p>
+            </div>
+            
+            <div class="config-input-row" style="margin-bottom: 12px;">
+              <input type="password" id="ghTokenInput" placeholder="github_pat_..." />
+              <button class="aws-btn aws-btn-primary" onclick="saveGitHubToken()">
+                Guardar Token
+              </button>
+              <button class="aws-btn aws-btn-secondary" onclick="clearGitHubToken()">
+                Eliminar Token
+              </button>
+            </div>
+            <p style="font-size: 12px; color: var(--aws-text-secondary);">
+              El token solo se guarda en el <code>localStorage</code> de tu navegador actual; nunca viaja a terceros ni queda expuesto en tu código.
+            </p>
+          </div>
+
+          <!-- Origen de Datos Fijo -->
           <div class="settings-card">
             <div class="settings-card-header">
               <h3>
                 <span class="tag-source">DATA SOURCE</span>
-                Origen Fijo de Datos (JSON Endpoint)
+                Ruta del Archivo JSON
               </h3>
-              <p>Define la ruta relativa, local o URL remota de tu archivo de bitácora para sincronización automática.</p>
+              <p>Ruta relativa al archivo de datos dentro de tu repositorio.</p>
             </div>
             
             <div class="config-input-row">
               <input type="text" id="jsonPathInput" value="./sesiones.json" placeholder="./sesiones.json" />
               <button class="aws-btn aws-btn-secondary" onclick="loadFromStaticPath()">
-                Cargar
-              </button>
-              <button class="aws-btn aws-btn-secondary" onclick="saveStaticPath()">
-                Fijar
+                Recargar Datos
               </button>
             </div>
           </div>
 
+          <!-- Respaldo Local -->
           <div class="settings-card">
             <div class="settings-card-header">
-              <h3>Importación y Respaldo Local</h3>
-              <p>Puedes importar un archivo .json manualmente desde tu ordenador o exportar el estado actual con todas las sesiones.</p>
+              <h3>Importación y Respaldo Manual</h3>
+              <p>Puedes importar un archivo .json de forma manual o exportar un respaldo a tu disco local.</p>
             </div>
 
             <div class="storage-actions-wrap">
@@ -750,17 +813,24 @@
   </div>
 
   <script>
-    let entries = [];
-    let isEditing = false;
-    const STORAGE_KEY = "aws_fixed_json_path";
+    const GH_OWNER = "dcsoft-ux";
+    const GH_REPO = "informes";
+    const GH_FILE_PATH = "sesiones.json";
+    const TOKEN_KEY = "aws_gh_pat";
     const DEFAULT_JSON_PATH = "./sesiones.json";
 
+    let entries = [];
+    let isEditing = false;
+
     document.addEventListener("DOMContentLoaded", () => {
-      const savedPath = localStorage.getItem(STORAGE_KEY) || DEFAULT_JSON_PATH;
-      document.getElementById("jsonPathInput").value = savedPath;
+      const savedToken = localStorage.getItem(TOKEN_KEY);
+      if (savedToken) {
+        document.getElementById("ghTokenInput").value = savedToken;
+      }
       loadFromStaticPath(false);
     });
 
+    // Control de navegación y tabs
     function switchTab(tabId) {
       document.querySelectorAll(".tab-content").forEach(el => el.classList.remove("active"));
       document.querySelectorAll(".aws-tab-item").forEach(el => el.classList.remove("active"));
@@ -783,20 +853,45 @@
       switchTab('tab-formulario');
     }
 
-    function saveStaticPath() {
-      const path = document.getElementById("jsonPathInput").value.trim();
-      if (!path) return;
-      localStorage.setItem(STORAGE_KEY, path);
-      alert("Ruta fijada en el navegador: " + path);
+    // Token Management
+    function saveGitHubToken() {
+      const token = document.getElementById("ghTokenInput").value.trim();
+      if (!token) return alert("Por favor ingresa un token válido.");
+      localStorage.setItem(TOKEN_KEY, token);
+      alert("Token guardado localmente de forma segura.");
     }
 
+    function clearGitHubToken() {
+      localStorage.removeItem(TOKEN_KEY);
+      document.getElementById("ghTokenInput").value = "";
+      alert("Token eliminado.");
+    }
+
+    function showBanner(msg, isVisible = true) {
+      const banner = document.getElementById("syncStatusBanner");
+      const text = document.getElementById("syncStatusText");
+      if (isVisible) {
+        text.textContent = msg;
+        banner.style.display = "flex";
+      } else {
+        banner.style.display = "none";
+      }
+    }
+
+    // Cargar datos
     async function loadFromStaticPath(showAlert = true) {
       const path = document.getElementById("jsonPathInput").value.trim() || DEFAULT_JSON_PATH;
 
       try {
-        const res = await fetch(path, { cache: "no-store" });
+        const separator = path.includes("?") ? "&" : "?";
+        const res = await fetch(`${path}${separator}_t=${Date.now()}`, {
+          cache: "no-store",
+          headers: { "Pragma": "no-cache", "Cache-Control": "no-cache" }
+        });
+
         if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
         const data = await res.json();
+        
         if (Array.isArray(data)) {
           entries = data.map(item => ({
             id: item.id || Date.now(),
@@ -808,16 +903,147 @@
           }));
           renderTable();
           if (showAlert) {
-            alert("Datos cargados exitosamente desde: " + path);
+            alert("Datos recargados exitosamente desde: " + path);
             switchTab('tab-registros');
           }
         }
       } catch (err) {
-        console.warn("Fallo fetch automático:", err);
-        if (showAlert) alert("No se pudo cargar el JSON automáticamente desde esa ruta. Si ejecutas desde file:// usa un servidor local como Live Server o el botón 'Importar JSON'.");
+        console.warn("Fallo al leer JSON:", err);
+        if (showAlert) alert("No se pudo cargar el JSON. Revisa la ruta o la consola.");
       }
     }
 
+    // Guardar cambios directamente en GitHub API
+    async function commitToGitHub(customMessage = "Actualizar sesiones.json via web UI") {
+      const token = localStorage.getItem(TOKEN_KEY);
+      if (!token) {
+        alert("No has configurado tu Personal Access Token. Ve a 'Configuración y API' para agregarlo.");
+        return;
+      }
+
+      showBanner("Guardando y enviando commit a GitHub...");
+
+      try {
+        const apiUrl = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_FILE_PATH}`;
+
+        // 1. Obtener el SHA actual del archivo (requerido por GitHub API para actualizar)
+        const getRes = await fetch(apiUrl, {
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Accept": "application/vnd.github+json"
+          }
+        });
+
+        let currentSha = null;
+        if (getRes.ok) {
+          const fileData = await getRes.json();
+          currentSha = fileData.sha;
+        }
+
+        // 2. Convertir JSON a Base64 compatible con UTF-8
+        const jsonString = JSON.stringify(entries, null, 2);
+        const base64Content = btoa(unescape(encodeURIComponent(jsonString)));
+
+        // 3. Hacer PUT a GitHub
+        const putRes = await fetch(apiUrl, {
+          method: "PUT",
+          headers: {
+            "Authorization": `Bearer ${token}`,
+            "Accept": "application/vnd.github+json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            message: customMessage,
+            content: base64Content,
+            sha: currentSha || undefined
+          })
+        });
+
+        if (!putRes.ok) {
+          const errData = await putRes.json();
+          throw new Error(errData.message || "Error al actualizar archivo en GitHub.");
+        }
+
+        showBanner("¡Cambios guardados con éxito en GitHub! Pages se actualizará en breve.");
+        setTimeout(() => showBanner("", false), 5000);
+      } catch (err) {
+        console.error(err);
+        showBanner("", false);
+        alert("Error al sincronizar con GitHub: " + err.message);
+      }
+    }
+
+    // Formularios y Gestión de Sesiones
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+      const id = document.getElementById("entryId").value;
+      const payload = {
+        fecha: document.getElementById("fecha").value,
+        temas: parseLines(document.getElementById("temas").value),
+        evaluaciones: parseLines(document.getElementById("evaluaciones").value),
+        laboratorios: parseLines(document.getElementById("laboratorios").value),
+        evidencia: parseLines(document.getElementById("evidencia").value)
+      };
+
+      if (isEditing) {
+        entries = entries.map(item => item.id === Number(id) ? { ...item, ...payload } : item);
+      } else {
+        entries.unshift({ id: Date.now(), ...payload });
+      }
+
+      cancelEdit();
+      switchTab('tab-registros');
+      renderTable();
+
+      // Guardado automático en GitHub si el token existe
+      if (localStorage.getItem(TOKEN_KEY)) {
+        await commitToGitHub(isEditing ? `Modificar sesión del ${payload.fecha}` : `Agregar sesión del ${payload.fecha}`);
+      }
+    }
+
+    function startEdit(id) {
+      const entry = entries.find(item => item.id === id);
+      if (!entry) return;
+
+      isEditing = true;
+      document.getElementById("entryId").value = entry.id;
+      document.getElementById("fecha").value = entry.fecha;
+      document.getElementById("temas").value = ensureArray(entry.temas).join("\n");
+      document.getElementById("evaluaciones").value = ensureArray(entry.evaluaciones).join("\n");
+      document.getElementById("laboratorios").value = ensureArray(entry.laboratorios).join("\n");
+      document.getElementById("evidencia").value = ensureArray(entry.evidencia).join("\n");
+
+      document.getElementById("tabFormTitle").textContent = "Editar Sesión (" + entry.fecha + ")";
+      document.getElementById("submitBtn").textContent = "Guardar y Sincronizar";
+
+      switchTab('tab-formulario');
+    }
+
+    function cancelEdit() {
+      isEditing = false;
+      document.getElementById("entryId").value = "";
+      document.getElementById("fecha").value = "";
+      document.getElementById("temas").value = "";
+      document.getElementById("evaluaciones").value = "";
+      document.getElementById("laboratorios").value = "";
+      document.getElementById("evidencia").value = "";
+
+      document.getElementById("tabFormTitle").textContent = "Registrar Nueva Sesión";
+      document.getElementById("submitBtn").textContent = "Crear y Guardar";
+      switchTab('tab-registros');
+    }
+
+    async function deleteEntry(id) {
+      if (confirm("¿Confirmas la eliminación de esta sesión?")) {
+        entries = entries.filter(item => item.id !== id);
+        renderTable();
+        if (localStorage.getItem(TOKEN_KEY)) {
+          await commitToGitHub("Eliminar registro de sesión");
+        }
+      }
+    }
+
+    // Utilidades de arrays y texto
     function parseLines(text) {
       if (!text) return [];
       return text.split("\n").map(l => l.trim()).filter(l => l.length > 0);
@@ -895,67 +1121,7 @@
       renderTable(filtered);
     }
 
-    function handleFormSubmit(e) {
-      e.preventDefault();
-      const id = document.getElementById("entryId").value;
-      const payload = {
-        fecha: document.getElementById("fecha").value,
-        temas: parseLines(document.getElementById("temas").value),
-        evaluaciones: parseLines(document.getElementById("evaluaciones").value),
-        laboratorios: parseLines(document.getElementById("laboratorios").value),
-        evidencia: parseLines(document.getElementById("evidencia").value)
-      };
-
-      if (isEditing) {
-        entries = entries.map(item => item.id === Number(id) ? { ...item, ...payload } : item);
-      } else {
-        entries.unshift({ id: Date.now(), ...payload });
-      }
-
-      cancelEdit();
-      switchTab('tab-registros');
-      renderTable();
-    }
-
-    function startEdit(id) {
-      const entry = entries.find(item => item.id === id);
-      if (!entry) return;
-
-      isEditing = true;
-      document.getElementById("entryId").value = entry.id;
-      document.getElementById("fecha").value = entry.fecha;
-      document.getElementById("temas").value = ensureArray(entry.temas).join("\n");
-      document.getElementById("evaluaciones").value = ensureArray(entry.evaluaciones).join("\n");
-      document.getElementById("laboratorios").value = ensureArray(entry.laboratorios).join("\n");
-      document.getElementById("evidencia").value = ensureArray(entry.evidencia).join("\n");
-
-      document.getElementById("tabFormTitle").textContent = "Editar Sesión (" + entry.fecha + ")";
-      document.getElementById("submitBtn").textContent = "Guardar Cambios";
-
-      switchTab('tab-formulario');
-    }
-
-    function cancelEdit() {
-      isEditing = false;
-      document.getElementById("entryId").value = "";
-      document.getElementById("fecha").value = "";
-      document.getElementById("temas").value = "";
-      document.getElementById("evaluaciones").value = "";
-      document.getElementById("laboratorios").value = "";
-      document.getElementById("evidencia").value = "";
-
-      document.getElementById("tabFormTitle").textContent = "Registrar Nueva Sesión";
-      document.getElementById("submitBtn").textContent = "Crear Registro";
-      switchTab('tab-registros');
-    }
-
-    function deleteEntry(id) {
-      if (confirm("¿Confirmas la eliminación de esta sesión?")) {
-        entries = entries.filter(item => item.id !== id);
-        renderTable();
-      }
-    }
-
+    // Exportar e Importar manual
     function exportJSON() {
       if (entries.length === 0) return alert("No hay datos para exportar.");
       const blob = new Blob([JSON.stringify(entries, null, 2)], { type: "application/json" });
