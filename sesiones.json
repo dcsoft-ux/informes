@@ -3,11 +3,22 @@
     "id": 1789148835801,
     "fecha": "2026-09-11",
     "temas": [
-      "test"
+      "Sustentación de refuerzo para AWS IA & ML Services Assessment"
     ],
-    "evaluaciones": [],
-    "laboratorios": [],
-    "evidencia": []
+    "evaluaciones": [
+      "AWS Certified AI Practitioner"
+    ],
+    "laboratorios": [
+      "S10 · IAM mínimo privilegio para IA, logging de invocación y control de costos"
+    ],
+    "evidencia": [
+      "Equipo 1: https://drive.google.com/file/d/1lXDbL5jyv2jsSAQMa67vVatx5onhH77K/view?usp=sharing",
+      "Equipo 2: https://drive.google.com/file/d/1kYycuogjNi3Byr6Eai4xGqCsyrd9bPKC/view?usp=sharing",
+      "Equipo 3: https://www.youtube.com/watch?v=ck1ugecd4jE",
+      "Equipo 4: https://drive.google.com/file/d/1_mIlssqzX_pFPySyL1p4Osj6uZ_ku4iF/view?usp=sharing",
+      "Equipo 5:",
+      "Equipo 6:"
+    ]
   },
   {
     "id": 1788822317162,
