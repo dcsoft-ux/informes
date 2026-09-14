@@ -1,5 +1,25 @@
 [
   {
+    "id": 1789427373460,
+    "fecha": "2026-09-15",
+    "temas": [
+      "Preparación de refuerzo Simulador AWS Certified AI Practitioner",
+      "Sustentación de refuerzo Simulador AWS Certified AI Practitioner"
+    ],
+    "evaluaciones": [],
+    "laboratorios": [
+      "S11 · Integración final, demo, documentación y cleanup"
+    ],
+    "evidencia": [
+      "https://drive.google.com/drive/folders/1MLRaj2SZhg63Dys8SimTzOzdZp92T5TJ?usp=drive_link",
+      "https://notebook.google.com/notebook/71a579ef-6297-4041-8ce5-b53a150a1db9/artifact/9d376fbc-ff3e-4cbe-8c94-d025b9240072?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_",
+      "https://www.youtube.com/watch?v=tQU-fmb9H54",
+      "https://docs.google.com/presentation/d/1i2UDDQlfOS48H21JER8aeDzudz-1Gw7T/edit?usp=sharing&ouid=113684739489652974873&rtpof=true&sd=true",
+      "https://docs.google.com/presentation/d/1Sgk8k__mOU114u-U6S82ay4nOsV2gsxk/edit?usp=sharing&ouid=113684739489652974873&rtpof=true&sd=true",
+      "https://docs.google.com/presentation/d/1o_phPe5xydmOAtlBTmeIRCb6hVkVeGoK/edit?usp=sharing&ouid=113684739489652974873&rtpof=true&sd=true"
+    ]
+  },
+  {
     "id": 1789148835801,
     "fecha": "2026-09-11",
     "temas": [
