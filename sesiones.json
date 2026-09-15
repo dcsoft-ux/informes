@@ -20,6 +20,26 @@
     ]
   },
   {
+    "id": 1789501907330,
+    "fecha": "2026-09-15",
+    "temas": [
+      "Repaso con gaminificación",
+      "Fundamentos de IA, ML y Ciclos de Vida",
+      "Algoritmos Clásicos de Machine Learning y Deep Learning",
+      "Métricas de Evaluación y Rendimiento",
+      "Estrategias de Despliegue, Inferencia y Operación (MLOps)",
+      "Patrones arquitectónicos de puesta en producción y entrega de modelos.",
+      "IA Generativa y Adaptación de Modelos",
+      "Pilares de IA Responsable y Gobernanza",
+      "Ecosistema de Servicios AWS para AI/ML"
+    ],
+    "evaluaciones": [],
+    "laboratorios": [],
+    "evidencia": [
+      "https://drive.google.com/drive/folders/1mqiKsG5XKGbFmV7tfdQjRf5yZqkwlsqm?usp=sharing"
+    ]
+  },
+  {
     "id": 1789148835801,
     "fecha": "2026-09-11",
     "temas": [
