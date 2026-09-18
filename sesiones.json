@@ -1,5 +1,18 @@
 [
   {
+    "id": 1789760871244,
+    "fecha": "2026-09-18",
+    "temas": [
+      "Repaso Manual de Referencia y Arquitectura: IA, Machine Learning, Generativa y Ecosistema AWS",
+      "IA Generativa y Adaptación de Modelos",
+      "Pilares de IA Responsable y Gobernanza",
+      "Ecosistema de Servicios AWS para AI/ML"
+    ],
+    "evaluaciones": [],
+    "laboratorios": [],
+    "evidencia": []
+  },
+  {
     "id": 1789760816435,
     "fecha": "2026-09-17",
     "temas": [
