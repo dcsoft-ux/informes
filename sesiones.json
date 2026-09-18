@@ -1,5 +1,19 @@
 [
   {
+    "id": 1789760816435,
+    "fecha": "2026-09-17",
+    "temas": [
+      "Repaso Manual de Referencia y Arquitectura: IA, Machine Learning, Generativa y Ecosistema AWS",
+      "Fundamentos de IA, ML y Ciclos de Vida",
+      "Algoritmos Clásicos de Machine Learning y Deep Learning",
+      "Métricas de Evaluación y Rendimiento",
+      "Estrategias de Despliegue, Inferencia y Operación (MLOps)"
+    ],
+    "evaluaciones": [],
+    "laboratorios": [],
+    "evidencia": []
+  },
+  {
     "id": 1789760605407,
     "fecha": "2026-09-16",
     "temas": [
