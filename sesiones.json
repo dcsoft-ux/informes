@@ -1,5 +1,19 @@
 [
   {
+    "id": 1790023267169,
+    "fecha": "2026-09-21",
+    "temas": [
+      "Integración final, demo, documentación, cleanup"
+    ],
+    "evaluaciones": [],
+    "laboratorios": [
+      "Capstone S11 - Integración final, demo, documentación, cleanup"
+    ],
+    "evidencia": [
+      "https://docs.google.com/document/d/1Ti1gIK-GS_1-0jL8A5WalPlUl6igxwGImjqa5c4p74w/edit?usp=sharing"
+    ]
+  },
+  {
     "id": 1789760871244,
     "fecha": "2026-09-18",
     "temas": [
