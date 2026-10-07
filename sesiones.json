@@ -2,11 +2,16 @@
   {
     "id": 1790383001593,
     "fecha": "2026-09-25",
+    "cohorte": "Sin Cohorte",
     "temas": [
       "Sustentaciones de proyecto Capstone día 2"
     ],
-    "evaluaciones": [],
+    "comentarioTemas": "",
     "laboratorios": [],
+    "comentarioLaboratorio": "",
+    "evaluaciones": [],
+    "comentarioEvaluacion": "",
+    "mejoras": "",
     "evidencia": [
       "https://docs.google.com/spreadsheets/d/1PWTsXdYW4TjUSGlr6jgE87775Ue7Cb7XoWzsckkLxCw/edit?usp=sharing"
     ]
@@ -14,11 +19,16 @@
   {
     "id": 1790280275359,
     "fecha": "2026-09-24",
+    "cohorte": "Sin Cohorte",
     "temas": [
       "Sustentaciones de proyecto Capstone día 1"
     ],
-    "evaluaciones": [],
+    "comentarioTemas": "",
     "laboratorios": [],
+    "comentarioLaboratorio": "",
+    "evaluaciones": [],
+    "comentarioEvaluacion": "",
+    "mejoras": "",
     "evidencia": [
       "https://docs.google.com/spreadsheets/d/1PWTsXdYW4TjUSGlr6jgE87775Ue7Cb7XoWzsckkLxCw/edit?usp=sharing"
     ]
@@ -26,24 +36,34 @@
   {
     "id": 1790185823082,
     "fecha": "2026-09-23",
+    "cohorte": "Sin Cohorte",
     "temas": [
       "Charla “Los sueños se cumplen”",
       "Ajustes y observaciones pre-sustentación proyecto capstone"
     ],
-    "evaluaciones": [],
+    "comentarioTemas": "",
     "laboratorios": [],
+    "comentarioLaboratorio": "",
+    "evaluaciones": [],
+    "comentarioEvaluacion": "",
+    "mejoras": "",
     "evidencia": []
   },
   {
     "id": 1790113343067,
     "fecha": "2026-09-22",
+    "cohorte": "Sin Cohorte",
     "temas": [
       "Integración final, demo, documentación, cleanup"
     ],
-    "evaluaciones": [],
+    "comentarioTemas": "",
     "laboratorios": [
       "Capstone S11 - Integración final, demo, documentación, cleanup"
     ],
+    "comentarioLaboratorio": "",
+    "evaluaciones": [],
+    "comentarioEvaluacion": "",
+    "mejoras": "",
     "evidencia": [
       "https://docs.google.com/document/d/1rODUz0bUOJbTkWDg9-kgr-QawR-d3CtHZh_3oD0vMec/edit?usp=sharing"
     ]
@@ -51,13 +71,18 @@
   {
     "id": 1790023267169,
     "fecha": "2026-09-21",
+    "cohorte": "Sin Cohorte",
     "temas": [
       "Integración final, demo, documentación, cleanup"
     ],
-    "evaluaciones": [],
+    "comentarioTemas": "",
     "laboratorios": [
       "Capstone S11 - Integración final, demo, documentación, cleanup"
     ],
+    "comentarioLaboratorio": "",
+    "evaluaciones": [],
+    "comentarioEvaluacion": "",
+    "mejoras": "",
     "evidencia": [
       "https://docs.google.com/document/d/1Ti1gIK-GS_1-0jL8A5WalPlUl6igxwGImjqa5c4p74w/edit?usp=sharing"
     ]
@@ -65,14 +90,19 @@
   {
     "id": 1789760871244,
     "fecha": "2026-09-18",
+    "cohorte": "Sin Cohorte",
     "temas": [
       "Repaso Manual de Referencia y Arquitectura: IA, Machine Learning, Generativa y Ecosistema AWS",
       "IA Generativa y Adaptación de Modelos",
       "Pilares de IA Responsable y Gobernanza",
       "Ecosistema de Servicios AWS para AI/ML"
     ],
-    "evaluaciones": [],
+    "comentarioTemas": "",
     "laboratorios": [],
+    "comentarioLaboratorio": "",
+    "evaluaciones": [],
+    "comentarioEvaluacion": "",
+    "mejoras": "",
     "evidencia": [
       "https://docs.google.com/document/d/1bSt3-J7ybNVRB7mLPIwkpvH8uFew7XQlKO_mt7Zt7PY/edit?usp=sharing"
     ]
@@ -80,6 +110,7 @@
   {
     "id": 1789760816435,
     "fecha": "2026-09-17",
+    "cohorte": "Sin Cohorte",
     "temas": [
       "Repaso Manual de Referencia y Arquitectura: IA, Machine Learning, Generativa y Ecosistema AWS",
       "Fundamentos de IA, ML y Ciclos de Vida",
@@ -87,8 +118,12 @@
       "Métricas de Evaluación y Rendimiento",
       "Estrategias de Despliegue, Inferencia y Operación (MLOps)"
     ],
-    "evaluaciones": [],
+    "comentarioTemas": "",
     "laboratorios": [],
+    "comentarioLaboratorio": "",
+    "evaluaciones": [],
+    "comentarioEvaluacion": "",
+    "mejoras": "",
     "evidencia": [
       "https://drive.google.com/file/d/1tvMKFyQIAymPPzJMiJ6QrptKGDVQB52q/view?usp=sharing",
       "https://drive.google.com/drive/folders/1muglF7W_7uLFw3XDtwX4qwe0WsEVTcBx?usp=sharing"
@@ -97,6 +132,7 @@
   {
     "id": 1789501907330,
     "fecha": "2026-09-15",
+    "cohorte": "Sin Cohorte",
     "temas": [
       "Repaso con gaminificación",
       "Fundamentos de IA, ML y Ciclos de Vida",
@@ -108,8 +144,12 @@
       "Pilares de IA Responsable y Gobernanza",
       "Ecosistema de Servicios AWS para AI/ML"
     ],
-    "evaluaciones": [],
+    "comentarioTemas": "",
     "laboratorios": [],
+    "comentarioLaboratorio": "",
+    "evaluaciones": [],
+    "comentarioEvaluacion": "",
+    "mejoras": "",
     "evidencia": [
       "https://drive.google.com/drive/folders/1mqiKsG5XKGbFmV7tfdQjRf5yZqkwlsqm?usp=sharing"
     ]
@@ -117,14 +157,19 @@
   {
     "id": 1789427373460,
     "fecha": "2026-09-14",
+    "cohorte": "Sin Cohorte",
     "temas": [
       "Preparación de refuerzo Simulador AWS Certified AI Practitioner",
       "Sustentación de refuerzo Simulador AWS Certified AI Practitioner"
     ],
-    "evaluaciones": [],
+    "comentarioTemas": "",
     "laboratorios": [
       "Capstone S11 - Integración final, demo, documentación y cleanup"
     ],
+    "comentarioLaboratorio": "",
+    "evaluaciones": [],
+    "comentarioEvaluacion": "",
+    "mejoras": "",
     "evidencia": [
       "https://drive.google.com/drive/folders/1MLRaj2SZhg63Dys8SimTzOzdZp92T5TJ?usp=drive_link",
       "https://notebook.google.com/notebook/71a579ef-6297-4041-8ce5-b53a150a1db9/artifact/9d376fbc-ff3e-4cbe-8c94-d025b9240072?utm_source=nlm_web_share&utm_medium=google_oo&utm_campaign=art_share_1&utm_content=&utm_smc=nlm_web_share_google_oo_art_share_1_",
@@ -137,15 +182,20 @@
   {
     "id": 1789148835801,
     "fecha": "2026-09-11",
+    "cohorte": "Sin Cohorte",
     "temas": [
       "Sustentación de refuerzo para AWS IA & ML Services Assessment"
     ],
-    "evaluaciones": [
-      "Simulador AWS Certified AI Practitioner"
-    ],
+    "comentarioTemas": "",
     "laboratorios": [
       "Capstone S10 - IAM mínimo privilegio para IA, logging de invocación y control de costos"
     ],
+    "comentarioLaboratorio": "",
+    "evaluaciones": [
+      "Simulador AWS Certified AI Practitioner"
+    ],
+    "comentarioEvaluacion": "",
+    "mejoras": "",
     "evidencia": [
       "https://drive.google.com/file/d/1lXDbL5jyv2jsSAQMa67vVatx5onhH77K/view?usp=sharing",
       "https://drive.google.com/file/d/1kYycuogjNi3Byr6Eai4xGqCsyrd9bPKC/view?usp=sharing",
@@ -158,14 +208,19 @@
   {
     "id": 1789065745973,
     "fecha": "2026-09-10",
+    "cohorte": "Sin Cohorte",
     "temas": [
       "AWS Certified AI Practitioner (16 preguntas resueltas)",
       "Preparación de sustentación de refuerzo para AWS IA & ML Services Assessment"
     ],
+    "comentarioTemas": "",
+    "laboratorios": [],
+    "comentarioLaboratorio": "",
     "evaluaciones": [
       "Simulador AWS IA & ML Services Assessment"
     ],
-    "laboratorios": [],
+    "comentarioEvaluacion": "",
+    "mejoras": "",
     "evidencia": [
       "https://drive.google.com/file/d/1PlamEEA89fUJv6-jUlPWGmx0m48SfXu6/view?usp=sharing",
       "https://docs.google.com/document/d/1T5yzQu_ztqC-MNx2Z6gDrNTti3Bo4UaBQ2WXF8PlWy0/edit?usp=sharing"
@@ -174,13 +229,18 @@
   {
     "id": 1788995716305,
     "fecha": "2026-09-09",
+    "cohorte": "Sin Cohorte",
     "temas": [
       "AWS Certified AI Practitioner (26 preguntas resueltas)"
     ],
-    "evaluaciones": [],
+    "comentarioTemas": "",
     "laboratorios": [
       "S09 Guardrails, Sesgo y Privacidad"
     ],
+    "comentarioLaboratorio": "",
+    "evaluaciones": [],
+    "comentarioEvaluacion": "",
+    "mejoras": "",
     "evidencia": [
       "https://drive.google.com/file/d/16nd5RARhVtlkj7iep0L5VOgugm1R85Bq/view?usp=sharing"
     ]
@@ -188,13 +248,18 @@
   {
     "id": 1788911442325,
     "fecha": "2026-09-08",
+    "cohorte": "Sin Cohorte",
     "temas": [
       "AWS Certified AI Practitioner (23 preguntas resueltas)"
     ],
-    "evaluaciones": [],
+    "comentarioTemas": "",
     "laboratorios": [
       "S09 Guardrails, Sesgo y Privacidad"
     ],
+    "comentarioLaboratorio": "",
+    "evaluaciones": [],
+    "comentarioEvaluacion": "",
+    "mejoras": "",
     "evidencia": [
       "https://drive.google.com/file/d/1T9r-MYi6d4w3pw9xwxgqKwWef8DH_6f_/view?usp=sharing"
     ]
@@ -202,11 +267,16 @@
   {
     "id": 1788822317162,
     "fecha": "2026-09-07",
+    "cohorte": "Sin Cohorte",
     "temas": [
       "AWS IA & ML Services Assessment 19 preguntas de 19"
     ],
-    "evaluaciones": [],
+    "comentarioTemas": "",
     "laboratorios": [],
+    "comentarioLaboratorio": "",
+    "evaluaciones": [],
+    "comentarioEvaluacion": "",
+    "mejoras": "",
     "evidencia": [
       "https://drive.google.com/file/d/17rww8bpRWhwbvJPEk7JvzZk27RpTL8cM/view?usp=sharing"
     ]
